@@ -1,0 +1,12 @@
+{
+  "refmap": "mixins.test.refmap.json",
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "com.diamondgoobird.mod.mixin",
+  "mixins": [
+    "otherMixinThatWillWork"
+  ],
+  "client": [
+  ],
+  "server": []
+}

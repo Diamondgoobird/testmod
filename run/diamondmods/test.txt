@@ -1,0 +1,14 @@
+Config for test
+
+Toggle (Enabled/Disabled):
+Enabled
+
+Window (name):
+Luner Cliant 1.9.8
+
+Shader Time (double):
+0.25
+
+Shader Type (all/post/program):
+custom.
+

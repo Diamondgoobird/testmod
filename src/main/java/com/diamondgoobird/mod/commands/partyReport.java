@@ -1,4 +1,4 @@
-package com.diamondgoobird.mod;
+package com.diamondgoobird.mod.commands;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;

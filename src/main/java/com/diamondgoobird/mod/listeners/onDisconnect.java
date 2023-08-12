@@ -1,4 +1,4 @@
-package com.diamondgoobird.mod;
+package com.diamondgoobird.mod.listeners;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

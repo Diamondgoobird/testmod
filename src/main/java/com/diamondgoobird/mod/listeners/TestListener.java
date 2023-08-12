@@ -1,9 +1,8 @@
-package com.diamondgoobird.mod;
+package com.diamondgoobird.mod.listeners;
 
-import net.minecraft.client.Minecraft;
+import com.diamondgoobird.mod.TestName;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class TestListener {
     @SubscribeEvent
@@ -13,7 +12,7 @@ public class TestListener {
             event.setCanceled(true);
         }
         else if (text.startsWith("\u00a7eClick here")) {
-            TestName.CancelNext = false;
+            TestName.cancelNext = false;
             event.setCanceled(true);
         }
     }

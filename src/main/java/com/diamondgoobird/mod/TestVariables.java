@@ -13,24 +13,17 @@ public class TestVariables {
 	public static final String MOD_NAME = "Diamond's test mod";
 	public static final String VERSION = "1.0";
 	public static final String[] things = {"Toggle", "Window", "Shader Time", "Shader Type"};
-	public static String[] stuff = {"Enabled", "Lunar Client 1.8.9", "1.0", "all"};
+	private static String[] stuff = {"Enabled", "Lunar Client 1.8.9", "1.0", "all"};
 	public static final String[] options = {"Enabled/Disabled", "name", "double", "all/post/program"};
 	public static final String minecraftPath = Minecraft.getMinecraft().mcDataDir.getAbsolutePath();
 	public static final String Path = minecraftPath + "\\diamondmods\\";
 	public static final String ConfigPath = Path + MOD_ID + ".txt";
 	public static final String CommandName = "test";
-	public static final FileUtils a = new FileUtils();
-	public static String logPrefix = "[" + MOD_NAME + "]: ";
 	public static File file = new File(ConfigPath);
-	public static String everything = "Config for " + MOD_ID + "\n\n";
-
-	public static void printConsole(String stuff) {
-		System.out.println(logPrefix + stuff);
-	}
+	private static String everything = "Config for " + MOD_ID + "\n\n";
 	
 	public static void print(String input) {
-		String message = input;
-		ChatComponentText e = new ChatComponentText(message);
+		ChatComponentText e = new ChatComponentText(input);
 		char[] a = new char[]{'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','k','l','m','n','o','r'};
 		int x = 0;
 		int b = 22;
@@ -44,8 +37,7 @@ public class TestVariables {
 	}
 	
 	public static void printEvent(String input,String thingy, ClickEvent.Action v) {
-		String message = input;
-		IChatComponent e = new ChatComponentText(message);
+		IChatComponent e = new ChatComponentText(input);
 		char[] a = new char[]{'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','k','l','m','n','o','r'};
 		int x = 0;
 		int b = 22;
@@ -68,7 +60,7 @@ public class TestVariables {
 		}
 	}
 	
-	public static final void printChat(IChatComponent input) {
+	public static void printChat(IChatComponent input) {
 		Minecraft.getMinecraft().thePlayer.addChatMessage(input);
 	}
 	
@@ -83,7 +75,7 @@ public class TestVariables {
 			results[loopedtimes] = checkVariable(input[loopedtimes]);
 			loopedtimes++;
 		}
-		stuff = results;
+		setStuff(results);
 		return results;
 	}
 	
@@ -129,7 +121,7 @@ public class TestVariables {
 		else {
 			print("&bSuccessfully Changed Variable &3" + variable + "&b to &3" + value);
 		}
-		stuff[index] = value;
+		getStuff()[index] = value;
 		saveConfig();
 	}
 	
@@ -143,26 +135,21 @@ public class TestVariables {
 			e.printStackTrace();
 		}
 		BufferedReader rfb = new BufferedReader(fr);
-			int loopedtimes = 0;
-			String[] ez = new String[100];
-			boolean stop = false;
-			while (stop != true) {
-			try {
-				ez[loopedtimes] = rfb.readLine();
-				if (ez[loopedtimes] == null) {
-					stop = true;
-					//System.out.println("End of file.");
-				}
-				else {
-					//System.out.println(ez[loopedtimes]);
-				}
+		int loopedtimes = 0;
+		String[] ez = new String[100];
+		boolean stop = false;
+		while (!stop) {
+		try {
+			ez[loopedtimes] = rfb.readLine();
+			if (ez[loopedtimes] == null) {
+				stop = true;
 			}
-			catch (Exception e) {
-				e.printStackTrace();
-			}
-				loopedtimes++;
-			}
-
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+			loopedtimes++;
+		}
 		return ez;
 	}
 	
@@ -175,16 +162,27 @@ public class TestVariables {
 	public static void saveConfig() {
 		int loopedtimes = 0;
 		while (things.length > loopedtimes) {
-			everything = everything + things[loopedtimes] + " (" + options[loopedtimes] + "):\n" + stuff[loopedtimes] + "\n\n";
+			everything = getEverything() + things[loopedtimes] + " (" + options[loopedtimes] + "):\n" + getStuff()[loopedtimes] + "\n\n";
 			loopedtimes++;
 		}
 		loopedtimes = 0;
-		CharSequence data = everything;
+		CharSequence data = getEverything();
 		try {
-			a.write(file, data);
+			FileUtils.write(file, data);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
+	public static String[] getStuff() {
+		return stuff;
+	}
+
+	public static void setStuff(String[] stuff) {
+		TestVariables.stuff = stuff;
+	}
+
+	public static String getEverything() {
+		return everything;
+	}
 }

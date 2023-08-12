@@ -3,10 +3,10 @@
   "required": true,
   "compatibilityLevel": "JAVA_8",
   "package": "com.diamondgoobird.mod.mixin",
-  "mixins": [
-    "otherMixinThatWillWork"
-  ],
+  "mixins": [],
   "client": [
+    "GuiMixin",
+    "WindowChanger"
   ],
   "server": []
 }

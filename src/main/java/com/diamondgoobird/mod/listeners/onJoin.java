@@ -1,4 +1,4 @@
-package com.diamondgoobird.mod;
+package com.diamondgoobird.mod.listeners;
 
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -9,7 +9,7 @@ public class onJoin {
     public static boolean joined = false;
     @SubscribeEvent
     public void chatEvent(ClientChatReceivedEvent event) {
-        if (joined != true) {
+        if (!joined) {
             Minecraft.getMinecraft().thePlayer.sendChatMessage("/lang english");
             joined = true;
             MinecraftForge.EVENT_BUS.unregister(this);

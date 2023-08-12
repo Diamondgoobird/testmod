@@ -1,21 +1,27 @@
-package com.diamondgoobird.mod;
+package com.diamondgoobird.mod.commands;
 
+import com.diamondgoobird.mod.shader.Shader;
+import com.diamondgoobird.mod.shader.Shaders;
+import com.diamondgoobird.mod.TestVariables;
+import com.diamondgoobird.mod.shader.shaderListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class shaderCommand extends CommandBase {
     public static Shader[] shaders;
-    public static boolean on = false;
+    private static boolean on = false;
+
+    public static boolean isOn() {
+        return on;
+    }
+
     @Override
     public String getCommandName() {return "shader";}
 
@@ -52,7 +58,7 @@ public class shaderCommand extends CommandBase {
             TestVariables.changeVariable("Shader Type", args[1]);
         }
         else if (args[0].equalsIgnoreCase("toggle")) {
-            if (on) {
+            if (isOn()) {
                 on = false;
                 MinecraftForge.EVENT_BUS.unregister(new shaderListener());
                 Minecraft.getMinecraft().entityRenderer.stopUseShader();
@@ -61,7 +67,7 @@ public class shaderCommand extends CommandBase {
                 on = true;
                 MinecraftForge.EVENT_BUS.register(new shaderListener());
             }
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Shader: " + on));
+            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Shader: " + isOn()));
         }
     }
     @Override

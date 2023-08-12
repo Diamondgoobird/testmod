@@ -1,10 +1,15 @@
-package com.diamondgoobird.mod;
+package com.diamondgoobird.mod.commands;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
+import com.diamondgoobird.mod.Test;
+import com.diamondgoobird.mod.TestName;
+import com.diamondgoobird.mod.TestVariables;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -79,7 +84,7 @@ public class TestCommand extends CommandBase {
 			TestVariables.changeVariable("Window",window);
 			Display.setTitle(TestVariables.checkVariable("Window"));
 			try {
-				InputStream a = new FileInputStream(TestVariables.Path + "logo.png");
+				InputStream a = Files.newInputStream(Paths.get(TestVariables.Path + "icon.png"));
 				Display.setIcon(new ByteBuffer[]{TestName.readImageToBuffer(a)});
 			} catch (Exception fasd) {
 
@@ -101,7 +106,7 @@ public class TestCommand extends CommandBase {
 			x++;
 		}
 		TestVariables.print(output);
-		TestVariables.printConsole(output);
+		TestName.log.info(output);
 	
 	}
 	

@@ -4,7 +4,7 @@ Toggle (Enabled/Disabled):
 Enabled
 
 Window (name):
-Luner Cliant 1.9.8
+Lunar Client 1.8.9
 
 Shader Time (double):
 0.25

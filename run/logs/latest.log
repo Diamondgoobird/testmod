@@ -1,150 +1,38 @@
-[17:57:39] [Client thread/INFO]: Setting user: Player798
-[17:57:43] [Client thread/INFO]: LWJGL Version: 2.9.4
-[17:57:50] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Diamond's test mod, test
-[17:57:50] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[17:57:50] [Thread-9/INFO]: Initializing LWJGL OpenAL
-[17:57:50] [Thread-9/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[17:57:51] [Thread-9/INFO]: OpenAL initialized.
-[17:57:51] [Sound Library Loader/INFO]: Sound engine started
-[17:58:08] [Client thread/INFO]: Created: 16x16 textures-atlas
-[17:58:10] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Diamond's test mod, test
-[17:58:10] [Client thread/INFO]: SoundSystem shutting down...
-[17:58:10] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
-[17:58:10] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[17:58:10] [Thread-11/INFO]: Initializing LWJGL OpenAL
-[17:58:10] [Thread-11/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[17:58:10] [Thread-11/INFO]: OpenAL initialized.
-[17:58:11] [Sound Library Loader/INFO]: Sound engine started
-[17:58:30] [Client thread/INFO]: Created: 512x512 textures-atlas
-[17:58:40] [Server thread/INFO]: Starting integrated minecraft server version 1.8.9
-[17:58:40] [Server thread/INFO]: Generating keypair
-[17:58:40] [Server thread/INFO]: Preparing start region for level 0
-[17:58:41] [Server thread/INFO]: Preparing spawn area: 52%
-[17:58:42] [Server thread/INFO]: Changing view distance to 12, from 10
-[17:58:43] [Server thread/INFO]: Player798[local:E:c9d860a5] logged in with entity id 362 at (-911.6315606508995, 79.97727979697149, 1333.2523797746096)
-[17:58:43] [Server thread/INFO]: Player798 joined the game
-[17:58:48] [Client thread/INFO]: [CHAT] §7set§r, §7time§r, §7type§r, §7toggle§r
-[17:58:50] [Client thread/INFO]: [CHAT] §7post§r, §7program§r
-[17:58:50] [Client thread/INFO]: [CHAT] §7antialias§r, §7art§r, §7bits§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7creeper§r, §7deconverge§r, §7desaturate§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7green§r, §7invert§r, §7notch§r, §7ntsc§r, §7outline§r, §7pencil§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[17:58:51] [Client thread/WARN]: Could not find uniform named OutSize in the specified shader program.
-[17:58:56] [Client thread/INFO]: [CHAT] §7antialias§r, §7art§r, §7bits§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7creeper§r, §7deconverge§r, §7desaturate§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7green§r, §7invert§r, §7notch§r, §7ntsc§r, §7outline§r, §7pencil§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[17:58:56] [Client thread/INFO]: [CHAT] §7antialias§r, §7art§r, §7bits§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7creeper§r, §7deconverge§r, §7desaturate§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7green§r, §7invert§r, §7notch§r, §7ntsc§r, §7outline§r, §7pencil§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[17:58:57] [Client thread/INFO]: [CHAT] §7antialias§r, §7art§r, §7bits§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7creeper§r, §7deconverge§r, §7desaturate§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7green§r, §7invert§r, §7notch§r, §7ntsc§r, §7outline§r, §7pencil§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[17:58:57] [Client thread/INFO]: [CHAT] §7antialias§r, §7art§r, §7bits§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7creeper§r, §7deconverge§r, §7desaturate§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7green§r, §7invert§r, §7notch§r, §7ntsc§r, §7outline§r, §7pencil§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[17:58:57] [Client thread/WARN]: Could not find uniform named OutSize in the specified shader program.
-[17:59:00] [Client thread/WARN]: Could not find uniform named InSize in the specified shader program.
-[17:59:15] [Client thread/WARN]: Could not find uniform named InSize in the specified shader program.
-[17:59:25] [Server thread/INFO]: Player798 has just earned the achievement [Taking Inventory]
-[17:59:26] [Client thread/INFO]: [CHAT] Player798 has just earned the achievement [Taking Inventory]
-[17:59:26] [Client thread/INFO]: [CHAT] Unknown command. Try /help for a list of commands
-[18:02:09] [Client thread/INFO]: [CHAT] §7antialias§r, §7art§r, §7bits§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7creeper§r, §7deconverge§r, §7desaturate§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7green§r, §7invert§r, §7notch§r, §7ntsc§r, §7outline§r, §7pencil§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:02:09] [Client thread/INFO]: [CHAT] §7antialias§r, §7art§r, §7bits§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7creeper§r, §7deconverge§r, §7desaturate§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7green§r, §7invert§r, §7notch§r, §7ntsc§r, §7outline§r, §7pencil§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:02:09] [Client thread/WARN]: Could not find uniform named LumaRamp in the specified shader program.
-[18:02:09] [Client thread/WARN]: Could not find uniform named InSize in the specified shader program.
-[18:02:26] [Client thread/WARN]: Shader ntsc_decodecould not find sampler named BaseSampler in the specified shader program.
-[18:02:26] [Client thread/WARN]: Could not find uniform named InSize in the specified shader program.
-[18:02:26] [Client thread/WARN]: Could not find uniform named InSize in the specified shader program.
-[18:02:37] [Client thread/WARN]: Could not find uniform named InSize in the specified shader program.
-[18:03:03] [Client thread/WARN]: Could not find uniform named InSize in the specified shader program.
-[18:04:36] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 2744ms behind, skipping 54 tick(s)
-[18:04:54] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 5054ms behind, skipping 101 tick(s)
-[18:05:17] [Server thread/INFO]: [Player798: Set the time to 1000]
-[18:05:17] [Client thread/INFO]: [CHAT] Set the time to 1000
-[18:05:23] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 12910ms behind, skipping 258 tick(s)
-[18:06:18] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:19] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:24] [Client thread/INFO]: [CHAT] §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r
-[18:06:25] [Client thread/INFO]: [CHAT] §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r
-[18:06:26] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:26] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:27] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:27] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:27] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:27] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:28] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:28] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:28] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:28] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:28] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:28] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:28] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:28] [Client thread/INFO]: [CHAT] §7antialias§r, §7bits§r, §7blit§r, §7blobs§r, §7blobs2§r, §7blur§r, §7bumpy§r, §7color_convolve§r, §7deconverge§r, §7downscale§r, §7entity_outline§r, §7flip§r, §7fxaa§r, §7invert§r, §7notch§r, §7ntsc_decode§r, §7ntsc_encode§r, §7outline§r, §7outline_combine§r, §7outline_soft§r, §7outline_watercolor§r, §7overlay§r, §7phosphor§r, §7scan_pincushion§r, §7sobel§r, §7spider§r, §7wobble§r
-[18:06:35] [Client thread/WARN]: Failed to load shader: minecraft:shaders/post/invery.json
-net.minecraft.client.util.JsonException: Invalid shaders/post/invery.json: File not found
-	at net.minecraft.client.util.JsonException.func_151379_a(JsonException.java:61) ~[JsonException.class:?]
-	at net.minecraft.client.shader.ShaderGroup.parseGroup(ShaderGroup.java:114) ~[ShaderGroup.class:?]
-	at net.minecraft.client.shader.ShaderGroup.<init>(ShaderGroup.java:54) ~[ShaderGroup.class:?]
-	at net.minecraft.client.renderer.EntityRenderer.loadShader(EntityRenderer.java:262) [EntityRenderer.class:?]
-	at com.diamondgoobird.mod.shaderCommand.processCommand(shaderCommand.java:36) [shaderCommand.class:?]
-	at net.minecraftforge.client.ClientCommandHandler.executeCommand(ClientCommandHandler.java:72) [ClientCommandHandler.class:?]
-	at net.minecraft.client.gui.GuiScreen.sendChatMessage(GuiScreen.java:485) [GuiScreen.class:?]
-	at net.minecraft.client.gui.GuiScreen.sendChatMessage(GuiScreen.java:476) [GuiScreen.class:?]
-	at net.minecraft.client.gui.GuiChat.keyTyped(GuiChat.java:131) [GuiChat.class:?]
-	at net.minecraft.client.gui.GuiScreen.handleKeyboardInput(GuiScreen.java:647) [GuiScreen.class:?]
-	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:597) [GuiScreen.class:?]
-	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1761) [Minecraft.class:?]
-	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1080) [Minecraft.class:?]
-	at net.minecraft.client.Minecraft.run(Minecraft.java:380) [Minecraft.class:?]
-	at net.minecraft.client.main.Main.main(Main.java:116) [Main.class:?]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_291]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_291]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_291]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_291]
-	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
-	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_291]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_291]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_291]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_291]
-	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
-	at GradleStart.main(GradleStart.java:26) [start/:?]
-Caused by: java.io.FileNotFoundException: minecraft:shaders/post/invery.json
-	at net.minecraft.client.resources.FallbackResourceManager.getResource(FallbackResourceManager.java:67) ~[FallbackResourceManager.class:?]
-	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:64) ~[SimpleReloadableResourceManager.class:?]
-	at net.minecraft.client.shader.ShaderGroup.parseGroup(ShaderGroup.java:64) ~[ShaderGroup.class:?]
-	... 25 more
-[18:06:36] [Client thread/WARN]: Could not find uniform named InSize in the specified shader program.
-[18:06:40] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 2269ms behind, skipping 45 tick(s)
-[18:20:20] [Client thread/INFO]: [CHAT] §7/shader§r, §7/pr§r, §7/test2§r, §7/test§r, §7/skyblockmods§r, §7/fov§r, /defaultgamemode, /msg, /testfor, /summon, /spreadplayers, /seed, /achievement, /tellraw, /tell, /title, /gamemode, /toggledownfall, /testforblock, /stats, /weather, /me, /particle, /scoreboard, /give, /debug, /worldborder, /clear, /replaceitem, /say, /trigger, /kill, /spawnpoint, /fill, /execute, /setblock, /entitydata, /difficulty, /blockdata, /help, /gamerule, /playsound, /forge, /effect, /enchant, /w, /publish, /xp, /clone, /time, /testforblocks, /tp, /setworldspawn, /?
-[18:20:23] [Client thread/INFO]: [CHAT] §7/test2§r, §7/test§r, /testfor, /tellraw, /tell, /testforblock, /testforblocks
-[18:20:27] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:27] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:27] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:27] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:27] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:28] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:29] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:29] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:29] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:29] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:29] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:29] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:30] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:30] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:30] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:31] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:31] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:31] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:31] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:31] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:31] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:31] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:32] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:37] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:38] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:38] [Client thread/INFO]: [CHAT] §7help§r, §7enable§r, §7disable§r, §7debug§r, §7variable§r, §7fov§r, §7fps§r, §7gamma§r, §7window§r
-[18:20:51] [Client thread/INFO]: [CHAT] §bSuccessfully Changed Variable §3Window§b to §3Ulnar Client 1.9.8
-[18:21:15] [Client thread/INFO]: [CHAT] §bSuccessfully Changed Variable §3Window§b to §3Luner Cliant 1.9.8
-[18:21:36] [Client thread/INFO]: Stopping!
-[18:21:36] [Client thread/INFO]: SoundSystem shutting down...
-[18:21:36] [Server thread/INFO]: Stopping server
-[18:21:36] [Server thread/INFO]: Saving players
-[18:21:36] [Server thread/INFO]: Saving worlds
-[18:21:36] [Server thread/INFO]: Saving chunks for level 'ez'/Overworld
-[18:21:36] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
-[18:21:36] [Server thread/INFO]: Saving chunks for level 'ez'/Nether
-[18:21:36] [Server thread/INFO]: Saving chunks for level 'ez'/The End
-[18:21:36] [Client Shutdown Thread/INFO]: Stopping server
-[18:21:36] [Client Shutdown Thread/INFO]: Saving players
-[18:21:36] [Client Shutdown Thread/INFO]: Saving worlds
-[18:21:36] [Client Shutdown Thread/INFO]: Saving chunks for level 'ez'/Overworld
+[14:02:28] [Client thread/INFO]: Setting user: Player297
+[14:02:31] [Client thread/INFO]: LWJGL Version: 2.9.4
+[14:02:37] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Diamond's test mod, test
+[14:02:37] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[14:02:37] [Thread-9/INFO]: Initializing LWJGL OpenAL
+[14:02:37] [Thread-9/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[14:02:38] [Thread-9/INFO]: OpenAL initialized.
+[14:02:38] [Sound Library Loader/INFO]: Sound engine started
+[14:02:55] [Client thread/INFO]: Created: 16x16 textures-atlas
+[14:02:57] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Diamond's test mod, test
+[14:02:57] [Client thread/INFO]: SoundSystem shutting down...
+[14:02:57] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[14:02:57] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[14:02:57] [Thread-11/INFO]: Initializing LWJGL OpenAL
+[14:02:57] [Thread-11/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[14:02:57] [Thread-11/INFO]: OpenAL initialized.
+[14:02:57] [Sound Library Loader/INFO]: Sound engine started
+[14:03:15] [Client thread/INFO]: Created: 512x512 textures-atlas
+[14:03:41] [Server thread/INFO]: Starting integrated minecraft server version 1.8.9
+[14:03:41] [Server thread/INFO]: Generating keypair
+[14:03:41] [Server thread/INFO]: Preparing start region for level 0
+[14:03:42] [Server thread/INFO]: Preparing spawn area: 40%
+[14:03:43] [Server thread/INFO]: Changing view distance to 12, from 10
+[14:03:44] [Server thread/INFO]: Player297[local:E:6825a931] logged in with entity id 368 at (140.32997892926866, 117.0, 1689.9208671151496)
+[14:03:44] [Server thread/INFO]: Player297 joined the game
+[14:04:42] [Server thread/INFO]: Saving and pausing game...
+[14:04:42] [Server thread/INFO]: Saving chunks for level 'ez'/Overworld
+[14:04:42] [Server thread/INFO]: Saving chunks for level 'ez'/Nether
+[14:04:42] [Server thread/INFO]: Saving chunks for level 'ez'/The End
+[14:04:43] [Server thread/INFO]: Stopping server
+[14:04:43] [Server thread/INFO]: Saving players
+[14:04:43] [Server thread/INFO]: Saving worlds
+[14:04:43] [Server thread/INFO]: Saving chunks for level 'ez'/Overworld
+[14:04:43] [Server thread/INFO]: Saving chunks for level 'ez'/Nether
+[14:04:43] [Server thread/INFO]: Saving chunks for level 'ez'/The End
+[14:04:51] [Client thread/INFO]: Stopping!
+[14:04:51] [Client thread/INFO]: SoundSystem shutting down...
+[14:04:51] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com

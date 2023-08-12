@@ -7,29 +7,14 @@ public class Shaders {
     static ArrayList<Shader> a;
 
     static {
-        a = new ArrayList<Shader>(Arrays.asList(new Shader(true, "antialias"), new Shader(true, "art"), new Shader(true, "bits"), new Shader(true, "blobs"), new Shader(true, "blobs2"), new Shader(true, "blur"), new Shader(true, "bumpy"), new Shader(true, "color_convolve"), new Shader(true, "creeper"), new Shader(true, "deconverge"), new Shader(true, "desaturate"), new Shader(true, "entity_outline"), new Shader(true, "flip"), new Shader(true, "fxaa"), new Shader(true, "green"), new Shader(true, "invert"), new Shader(true, "notch"), new Shader(true, "ntsc"), new Shader(true, "outline"), new Shader(true, "pencil"), new Shader(true, "phosphor"), new Shader(true, "scan_pincushion"), new Shader(true, "sobel"), new Shader(true, "spider"), new Shader(true, "wobble"), new Shader(false, "antialias"), new Shader(false, "bits"), new Shader(false, "blit"), new Shader(false, "blobs"), new Shader(false, "blobs2"), new Shader(false, "blur"), new Shader(false, "bumpy"), new Shader(false, "color_convolve"), new Shader(false, "deconverge"), new Shader(false, "downscale"), new Shader(false, "entity_outline"), new Shader(false, "flip"), new Shader(false, "fxaa"), new Shader(false, "invert"), new Shader(false, "notch"), new Shader(false, "ntsc_decode"), new Shader(false, "ntsc_encode"), new Shader(false, "outline"), new Shader(false, "outline_combine"), new Shader(false, "outline_soft"), new Shader(false, "outline_watercolor"), new Shader(false, "overlay"), new Shader(false, "phosphor"), new Shader(false, "scan_pincushion"), new Shader(false, "sobel"), new Shader(false, "spider"), new Shader(false, "wobble")));
+        a = new ArrayList<Shader>(Arrays.asList(new Shader("post", "antialias"), new Shader("post", "art"), new Shader("post", "bits"), new Shader("post", "blobs"), new Shader("post", "blobs2"), new Shader("post", "blur"), new Shader("post", "bumpy"), new Shader("post", "color_convolve"), new Shader("post", "creeper"), new Shader("post", "deconverge"), new Shader("post", "desaturate"), new Shader("post", "entity_outline"), new Shader("post", "flip"), new Shader("post", "fxaa"), new Shader("post", "green"), new Shader("post", "invert"), new Shader("post", "notch"), new Shader("post", "ntsc"), new Shader("post", "outline"), new Shader("post", "pencil"), new Shader("post", "phosphor"), new Shader("post", "scan_pincushion"), new Shader("post", "sobel"), new Shader("post", "spider"), new Shader("post", "wobble"), new Shader("program", "antialias"), new Shader("program", "bits"), new Shader("program", "blit"), new Shader("program", "blobs"), new Shader("program", "blobs2"), new Shader("program", "blur"), new Shader("program", "bumpy"), new Shader("program", "color_convolve"), new Shader("program", "deconverge"), new Shader("program", "downscale"), new Shader("program", "entity_outline"), new Shader("program", "flip"), new Shader("program", "fxaa"), new Shader("program", "invert"), new Shader("program", "notch"), new Shader("program", "ntsc_decode"), new Shader("program", "ntsc_encode"), new Shader("program", "outline"), new Shader("program", "outline_combine"), new Shader("program", "outline_soft"), new Shader("program", "outline_watercolor"), new Shader("program", "overlay"), new Shader("program", "phosphor"), new Shader("program", "scan_pincushion"), new Shader("program", "sobel"), new Shader("program", "spider"), new Shader("program", "wobble")));
     }
-    public static boolean contains(String check) {
-        for (Shader b : a) {
-            if (b.name1.equalsIgnoreCase(check)) {
-                return true;
-            }
-        }
-        return false;
-    }
-    public static boolean isPost(String check) {
-        for (Shader b : a) {
-            if (b.post1) {
-                return true;
-            }
-        }
-        return false;
-    }
-    public static String[] getShaderNames(boolean post) {
+
+    public static String[] getShaderNames(String directory) {
         ArrayList<String> c = new ArrayList<>();
         for (Shader b : a) {
-            if (b.post1 == post) {
-                c.add(b.name1);
+            if (b.getDirectory().equals(directory)) {
+                c.add(b.getName());
             }
         }
         return c.toArray(new String[0]);

@@ -5,6 +5,8 @@
   "package": "com.diamondgoobird.mod.mixin",
   "mixins": [],
   "client": [
+    "FMLCommonHandlerMixin",
+    "GuiMainMenuMixin",
     "GuiMixin",
     "WindowChanger"
   ],

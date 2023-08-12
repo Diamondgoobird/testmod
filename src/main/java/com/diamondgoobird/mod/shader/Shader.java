@@ -3,16 +3,24 @@ package com.diamondgoobird.mod.shader;
 import net.minecraft.util.ResourceLocation;
 
 public class Shader {
-    boolean post1;
-    String name1;
-    public Shader(boolean post, String name) {
-        post1 = post;
-        name1 = name;
+    private final ResourceLocation location;
+    private final String name;
+    private final String directory;
+
+    public Shader(String directory, String name) {
+        this.name = name;
+        this.directory = directory;
+        location = new ResourceLocation("shaders/" + directory + "/" + name + ".json");
     }
     public ResourceLocation getLocation() {
-        if (post1) {
-            return new ResourceLocation("shaders/post/" + name1 + ".json");
-        }
-        return new ResourceLocation("shaders/program/" + name1 + ".json");
+        return location;
+    }
+
+    public String getDirectory() {
+        return directory;
+    }
+
+    public String getName() {
+        return name;
     }
 }

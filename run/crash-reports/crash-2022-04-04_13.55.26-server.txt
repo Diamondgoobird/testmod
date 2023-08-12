@@ -5,7 +5,7 @@ Time: 4/4/22 1:55 PM
 Description: Exception in server tick loop
 
 java.lang.NullPointerException: Exception in server tick loop
-	at com.diamondgoobird.mod.TestListener.onTick(TestListener.java:39)
+	at com.diamondgoobird.mod.listeners.TestListener.onTick(TestListener.java:39)
 	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_6_TestListener_onTick_WorldTickEvent.invoke(.dynamic)
 	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:49)
 	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:140)

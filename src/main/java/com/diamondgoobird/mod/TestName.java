@@ -2,8 +2,8 @@ package com.diamondgoobird.mod;
 
 import com.diamondgoobird.mod.commands.*;
 import com.diamondgoobird.mod.listeners.TestListener;
-import com.diamondgoobird.mod.listeners.onDisconnect;
-import com.diamondgoobird.mod.listeners.onJoin;
+import com.diamondgoobird.mod.listeners.OnDisconnect;
+import com.diamondgoobird.mod.listeners.OnJoin;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -33,8 +33,8 @@ public class TestName {
 		log.info("Starting preinit...");
 		Display.setTitle(TestVariables.checkVariable("Window"));
 		MinecraftForge.EVENT_BUS.register(new TestListener());
-		MinecraftForge.EVENT_BUS.register(new onJoin());
-		MinecraftForge.EVENT_BUS.register(new onDisconnect());
+		MinecraftForge.EVENT_BUS.register(new OnJoin());
+		MinecraftForge.EVENT_BUS.register(new OnDisconnect());
 	}
 	
 	@EventHandler
@@ -42,9 +42,9 @@ public class TestName {
 		log.info("Initializing Mod...");
 		TestVariables.checkConfig(null);
 		ClientCommandHandler.instance.registerCommand(new TestCommand());
-		ClientCommandHandler.instance.registerCommand(new fovCommand());
-		ClientCommandHandler.instance.registerCommand(new partyReport());
-		ClientCommandHandler.instance.registerCommand(new shaderCommand());
+		ClientCommandHandler.instance.registerCommand(new FovCommand());
+		ClientCommandHandler.instance.registerCommand(new PartyReport());
+		ClientCommandHandler.instance.registerCommand(new ShaderCommand());
 	}
 	
 	@EventHandler

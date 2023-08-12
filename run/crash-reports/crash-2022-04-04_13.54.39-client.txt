@@ -5,7 +5,7 @@ Time: 4/4/22 1:54 PM
 Description: Unexpected error
 
 java.lang.NullPointerException: Unexpected error
-	at com.diamondgoobird.mod.TestListener.onTick(TestListener.java:39)
+	at com.diamondgoobird.mod.listeners.TestListener.onTick(TestListener.java:39)
 	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_6_TestListener_onTick_RenderTickEvent.invoke(.dynamic)
 	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:49)
 	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:140)

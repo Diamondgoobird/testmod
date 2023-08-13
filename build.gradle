@@ -52,7 +52,7 @@ configurations {
 }
 
 dependencies {
-    embed("org.spongepowered:mixin:0.6-SNAPSHOT") {
+    implementation("org.spongepowered:mixin:0.6-SNAPSHOT") {
         exclude module: 'launchwrapper'
         exclude module: 'guava'
         exclude module: 'gson'
@@ -106,7 +106,7 @@ jar {
             "MixinConfigs": 'mixins.test.json',
             "ModSide": "CLIENT",
             "ForceLoadAsMod": "true",
-            "TweakClass" : "org.spongepowered.asm.launch.MixinTweaker",
+            "TweakClass" : "gg.essential.loader.stage0.EssentialSetupTweaker",
             "FMLCorePluginContainsFMLMod": 'true',
             "Manifest-Version": 1.0
     )

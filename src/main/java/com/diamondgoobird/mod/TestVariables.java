@@ -5,22 +5,64 @@ import net.minecraft.event.ClickEvent;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
 import org.apache.commons.io.FileUtils;
+import scala.Int;
 
+import java.awt.*;
 import java.io.*;
 
 public class TestVariables {
 	public static final String MOD_ID = "test";
 	public static final String MOD_NAME = "Diamond's test mod";
 	public static final String VERSION = "1.0";
-	public static final String[] things = {"Toggle", "Window", "Shader Time", "Shader Type"};
-	private static String[] stuff = {"Enabled", "Lunar Client 1.8.9", "1.0", "all"};
-	public static final String[] options = {"Enabled/Disabled", "name", "double", "all/post/program"};
+	public static final String[] things = {"Toggle", "Window", "Shader Time", "Shader Type", "Color", "Color Type"};
+	private static String[] stuff = {"Enabled", "Lunar Client 1.8.9", "1.0", "all", "#00FBFF", "static"};
+	public static final String[] options = {"Enabled/Disabled", "name", "double", "all/post/program", "hex color code", "static/rainbow/random"};
 	public static final String minecraftPath = Minecraft.getMinecraft().mcDataDir.getAbsolutePath();
 	public static final String Path = minecraftPath + "\\diamondmods\\";
 	public static final String ConfigPath = Path + MOD_ID + ".txt";
-	public static final String CommandName = "test";
-	public static File file = new File(ConfigPath);
+	private static File file = new File(ConfigPath);
 	private static String everything = "Config for " + MOD_ID + "\n\n";
+
+	private static Color buttonColor; // = new Color(Integer.decode(checkVariable("Color")));
+
+	public static Color getButtonColor() {
+		try {
+			return buttonColor;
+		}
+		catch (NullPointerException e) {
+			try {
+				buttonColor = new Color(Integer.decode(checkVariable("Color")));
+				return buttonColor;
+			}
+			catch (NullPointerException f) {
+				return new Color(0, 251, 255);
+			}
+		}
+	}
+
+	public static void setColor(String hex) {
+		try {
+			setColor(new Color(Integer.decode(hex)));
+		}
+		catch (NumberFormatException e) {
+			print("Couldn't get color from \"" + hex + "\"");
+		}
+	}
+
+	public static void setColor(String r, String g, String b) {
+		try {
+			setColor(new Color(Integer.parseInt(r), Integer.parseInt(g), Integer.parseInt(b)));
+		}
+		catch (NumberFormatException e) {
+			print("Couldn't get color from \"" + r + " " + g + " " + b + "\"");
+		}
+	}
+
+	private static void setColor(Color color) {
+		buttonColor = color;
+		changeVariable("Color", Integer.toHexString(color.getRGB()));
+		print("&bSet color to " + Integer.toHexString(color.getRGB()));
+	}
 	
 	public static void print(String input) {
 		ChatComponentText e = new ChatComponentText(input);
@@ -77,6 +119,15 @@ public class TestVariables {
 		}
 		setStuff(results);
 		return results;
+	}
+
+	public static String checkVariableEfficiently(String variable) {
+		for (int i = 0; i < things.length; i++) {
+			if (variable.equals(things[i])) {
+				return stuff[i];
+			}
+		}
+		return null;
 	}
 	
 	public static String checkVariable(String variable) {

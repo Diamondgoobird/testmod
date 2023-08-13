@@ -33,8 +33,8 @@ public class TestName {
 		log.info("Starting preinit...");
 		Display.setTitle(TestVariables.checkVariable("Window"));
 		MinecraftForge.EVENT_BUS.register(new TestListener());
-		MinecraftForge.EVENT_BUS.register(new OnJoin());
-		MinecraftForge.EVENT_BUS.register(new OnDisconnect());
+		// MinecraftForge.EVENT_BUS.register(new OnJoin());
+		// MinecraftForge.EVENT_BUS.register(new OnDisconnect());
 	}
 	
 	@EventHandler
@@ -45,6 +45,7 @@ public class TestName {
 		ClientCommandHandler.instance.registerCommand(new FovCommand());
 		ClientCommandHandler.instance.registerCommand(new PartyReport());
 		ClientCommandHandler.instance.registerCommand(new ShaderCommand());
+		ClientCommandHandler.instance.registerCommand(new ButtonColorCommand());
 	}
 	
 	@EventHandler

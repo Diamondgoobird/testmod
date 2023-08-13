@@ -29,7 +29,7 @@ public class TestCommand extends CommandBase {
 	@Override
 	public String getCommandName() {
 		// TODO Auto-generated method stub
-		return TestVariables.CommandName;
+		return "test";
 	}
 
 	@Override
@@ -41,10 +41,8 @@ public class TestCommand extends CommandBase {
 	@Override
 	public void processCommand(ICommandSender sender, String[] args) throws CommandException {
 		if (args.length <= 0) {
-			sender.addChatMessage(new ChatComponentText(EnumChatFormatting.AQUA + "Please try again (Type '/"+ TestVariables.CommandName + " help' for options)"));
-			return;
-        }
-		
+			sender.addChatMessage(new ChatComponentText(EnumChatFormatting.AQUA + "Please try again (Type \"/test help\" for options)"));
+		}
 		else if (args[0].equalsIgnoreCase(options[0])) {
 			TestVariables.print(help);
 		}

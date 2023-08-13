@@ -29,19 +29,19 @@ public class GuiMixin {
         try {
             ci.cancel();
             switch (TestVariables.checkVariableEfficiently("Color Type").toLowerCase()) {
-                case "static":
-                    try {
-                        color = TestVariables.getButtonColor().getRGB();
-                    } catch (NullPointerException ignored) {
-
-                    }
-                    break;
                 case "rainbow":
                     color = Color.HSBtoRGB(hue, 1.0f, 1.0f);
                     hue += 0.0001f;
                     break;
                 case "random":
                     color = new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()).getRGB();
+                    break;
+                default:
+                    try {
+                        color = TestVariables.getButtonColor().getRGB();
+                    } catch (NullPointerException ignored) {
+
+                    }
                     break;
             }
         }

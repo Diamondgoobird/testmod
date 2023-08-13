@@ -127,7 +127,7 @@ public class TestVariables {
 				return stuff[i];
 			}
 		}
-		return null;
+		return "static";
 	}
 	
 	public static String checkVariable(String variable) {

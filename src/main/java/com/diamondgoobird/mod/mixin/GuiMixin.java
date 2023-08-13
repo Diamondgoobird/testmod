@@ -46,7 +46,7 @@ public class GuiMixin {
             }
         }
         catch (Exception h) {
-            h.printStackTrace();
+
         }
         fontRendererIn.drawStringWithShadow(text, (float)(x - fontRendererIn.getStringWidth(text) / 2), (float)y, color);
     }

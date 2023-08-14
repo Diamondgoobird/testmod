@@ -1,6 +1,6 @@
 package com.diamondgoobird.mod.mixin;
 
-import com.diamondgoobird.mod.TestVariables;
+import com.diamondgoobird.mod.TestConfig;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import org.spongepowered.asm.mixin.Mixin;
@@ -28,24 +28,24 @@ public class GuiMixin {
         int color = new Color(0, 251, 255).getRGB();
         try {
             ci.cancel();
-            switch (TestVariables.checkVariableEfficiently("Color Type").toLowerCase()) {
-                case "rainbow":
-                    color = Color.HSBtoRGB(hue, 1.0f, 1.0f);
-                    hue += 0.0001f;
-                    break;
-                case "random":
-                    color = new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()).getRGB();
-                    break;
-                default:
+            switch (TestConfig.instance.buttonType) {
+                case 0:
                     try {
-                        color = TestVariables.getButtonColor().getRGB();
+                        color = TestConfig.instance.buttonColor.getRGB();
                     } catch (NullPointerException ignored) {
 
                     }
                     break;
+                case 1:
+                    color = Color.HSBtoRGB(hue, 1.0f, 1.0f);
+                    hue += 0.0001f;
+                    break;
+                case 2:
+                    color = new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()).getRGB();
+                    break;
             }
         }
-        catch (Exception h) {
+        catch (Exception ignored) {
 
         }
         fontRendererIn.drawStringWithShadow(text, (float)(x - fontRendererIn.getStringWidth(text) / 2), (float)y, color);

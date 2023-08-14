@@ -16,10 +16,4 @@ public class TestListener {
             event.setCanceled(true);
         }
     }
-    /*@SubscribeEvent
-    public static void onJoin(PlayerEvent.PlayerLoggedInEvent event) {
-        new Thread(() -> {
-            Minecraft.getMinecraft().thePlayer.sendChatMessage("/lang english");
-        }).start();
-    }*/
 }

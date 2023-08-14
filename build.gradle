@@ -2,6 +2,7 @@
 // For those who want the bleeding edge
 buildscript {
     repositories {
+        gradlePluginPortal()
         jcenter()
         maven {
             name = "forge"
@@ -17,6 +18,12 @@ buildscript {
         classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
     }
 }
+
+plugins {
+    id "maven"
+    id "com.github.johnrengelman.shadow" version "2.0.2"
+}
+
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
 
@@ -35,6 +42,7 @@ sourceCompatibility = targetCompatibility = 1.8
 
 repositories {
     jcenter()
+    gradlePluginPortal()
     maven {
         name = "sponge"
         url = "https://repo.spongepowered.org/repository/maven-public/"
@@ -60,6 +68,7 @@ dependencies {
     }
     embed "gg.essential:loader-launchwrapper:1.1.3"
     implementation "gg.essential:essential-1.8.9-forge:3760"
+    implementation ("gg.essential:vigilance-1.8.9-forge:288")
 }
 
 mixin {
@@ -111,9 +120,19 @@ jar {
             "Manifest-Version": 1.0
     )
 
-    configurations.embed.each { dep ->
+    /*configurations.embed.each { dep ->
         from(project.zipTree(dep)) {
             exclude 'META-INF', 'META-INF/**'
         }
-    }
+    }*/
 }
+
+shadowJar {
+    relocate("gg.essential.vigilance", "com.diamondgoobird.vigilance")
+    // vigilance dependencies
+    relocate("gg.essential.elementa", "com.diamondgoobird.elementa")
+    // elementa dependencies
+    relocate("gg.essential.universalcraft", "com.diamondgoobird.universalcraft")
+}
+
+reobfJar.dependsOn(shadowJar)

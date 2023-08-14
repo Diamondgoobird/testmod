@@ -1,7 +1,7 @@
 package com.diamondgoobird.mod.mixin;
 
+import com.diamondgoobird.mod.TestConfig;
 import com.diamondgoobird.mod.TestName;
-import com.diamondgoobird.mod.TestVariables;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.DefaultResourcePack;
 import net.minecraft.util.ResourceLocation;
@@ -11,11 +11,11 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 
 import static com.diamondgoobird.mod.TestName.readImageToBuffer;
@@ -45,7 +45,9 @@ public class WindowChanger {
     @Unique
     private boolean testmod$setCustomIcon() {
         try {
-            InputStream a = Files.newInputStream(Paths.get(TestVariables.Path + "logo.png"));
+            String e = new File("config/icon.png").getAbsolutePath();
+            TestName.log.info(e);
+            InputStream a = Files.newInputStream(Paths.get(e));
             Display.setIcon(new ByteBuffer[]{readImageToBuffer(a)});
             return true;
         } catch (IOException fasd) {
@@ -56,6 +58,6 @@ public class WindowChanger {
 
     @Redirect(method = "createDisplay", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/Display;setTitle(Ljava/lang/String;)V"))
     public void setDisplayTitle(String newTitle) {
-        Display.setTitle(TestVariables.checkVariable("Window"));
+        Display.setTitle(TestConfig.instance.windowName);
     }
 }

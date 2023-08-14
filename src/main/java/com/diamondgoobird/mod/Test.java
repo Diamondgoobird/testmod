@@ -37,7 +37,7 @@ public class Test {
         try {
             Minecraft.getMinecraft().gameSettings.setOptionFloatValue(GameSettings.Options.FOV,Float.parseFloat(fov));
         } catch (Exception z) {
-            TestVariables.print("&bFailed to get new fov value, got: &3" + fov);
+            TestName.print("&bFailed to get new fov value, got: &3" + fov);
         }
     }
     public static void setGamma(String gamma) {
@@ -45,20 +45,14 @@ public class Test {
             Minecraft.getMinecraft().gameSettings.setOptionFloatValue(GameSettings.Options.GAMMA, Float.parseFloat(gamma));
         }
         catch (Exception z) {
-            TestVariables.print("&bFailed to get new gamma value, got: &3" + gamma);
+            TestName.print("&bFailed to get new gamma value, got: &3" + gamma);
         }
     }
     public static void setFps(String fps) {
-            try {
-                Minecraft.getMinecraft().gameSettings.setOptionFloatValue(GameSettings.Options.FRAMERATE_LIMIT, Float.parseFloat(fps));
-            } catch (Exception h) {
-                TestVariables.print("&bFailed to get new fps value, got: &3" + fps);
-            }
+        try {
+            Minecraft.getMinecraft().gameSettings.setOptionFloatValue(GameSettings.Options.FRAMERATE_LIMIT, Float.parseFloat(fps));
+        } catch (Exception h) {
+            TestName.print("&bFailed to get new fps value, got: &3" + fps);
         }
-
-    public static void test() throws LWJGLException {
-        Minecraft.getMinecraft().getIntegratedServer().stopServer();
-        Display.makeCurrent();
     }
-
 }

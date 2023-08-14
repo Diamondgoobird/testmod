@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Minecraft Client" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="GradleStart" />
+    <module name="testmod.main" />
+    <option name="PROGRAM_PARAMETERS" value="--tweakClass gg.essential.loader.stage0.EssentialSetupTweaker --mixin mixins.test.json" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+    <RunnerSettings RunnerId="Run" />
+    <ConfigurationWrapper RunnerId="Run" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

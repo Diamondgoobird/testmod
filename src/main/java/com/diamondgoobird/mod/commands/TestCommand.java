@@ -2,11 +2,10 @@ package com.diamondgoobird.mod.commands;
 
 import com.diamondgoobird.mod.TestConfig;
 import gg.essential.api.EssentialAPI;
-import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 
-public class TestCommand extends CommandBase {
+public class TestCommand extends BaseCommand {
 	@Override
 	public String getCommandName() {
 		return "test";
@@ -21,14 +20,4 @@ public class TestCommand extends CommandBase {
 	public void processCommand(ICommandSender sender, String[] args) throws CommandException {
 		EssentialAPI.getGuiUtil().openScreen(TestConfig.instance.gui());
 	}
-	
-	@Override
-	public boolean canCommandSenderUseCommand(ICommandSender sender) {
-		return true;
-	}
-	
-	@Override
-	public int getRequiredPermissionLevel() {
-        return 0;
-    }
 }

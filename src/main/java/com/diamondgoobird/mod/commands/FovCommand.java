@@ -5,7 +5,7 @@ import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 
-public class FovCommand extends CommandBase {
+public class FovCommand extends BaseCommand {
     @Override
     public String getCommandName() {
         return "fov";
@@ -21,15 +21,5 @@ public class FovCommand extends CommandBase {
         if (args.length >= 1) {
             Test.setFov(args[0]);
         }
-    }
-    @Override
-    public boolean canCommandSenderUseCommand(ICommandSender sender) {
-        return true;
-    }
-
-    @Override
-    public int getRequiredPermissionLevel()
-    {
-        return 0;
     }
 }

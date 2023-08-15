@@ -5,7 +5,7 @@ import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 
-public class PartyReport extends CommandBase {
+public class PartyReport extends BaseCommand {
     @Override
     public String getCommandName() {
         return "pr";
@@ -18,14 +18,5 @@ public class PartyReport extends CommandBase {
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
         Minecraft.getMinecraft().thePlayer.sendChatMessage("/report " + args[0] + " -b PC_C IGR -C");
-    }
-    @Override
-    public boolean canCommandSenderUseCommand(ICommandSender sender) {
-        return true;
-    }
-
-    @Override
-    public int getRequiredPermissionLevel() {
-        return 0;
     }
 }

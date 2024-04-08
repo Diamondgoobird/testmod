@@ -8,7 +8,8 @@
     "FMLCommonHandlerMixin",
     "GuiMainMenuMixin",
     "GuiMixin",
-    "WindowChanger"
+    "WindowChanger",
+    "ClosePacketMixin"
   ],
   "server": []
 }

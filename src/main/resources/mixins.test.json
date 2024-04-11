@@ -3,13 +3,10 @@
   "required": true,
   "compatibilityLevel": "JAVA_8",
   "package": "com.diamondgoobird.mod.mixin",
-  "mixins": [],
   "client": [
     "FMLCommonHandlerMixin",
     "GuiMainMenuMixin",
     "GuiMixin",
-    "WindowChanger",
-    "ClosePacketMixin"
-  ],
-  "server": []
+    "WindowChanger"
+  ]
 }

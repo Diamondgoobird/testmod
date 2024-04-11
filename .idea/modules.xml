@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.diamondgoobird.test.testmod.api.iml" filepath="$PROJECT_DIR$/.idea/modules/com.diamondgoobird.test.testmod.api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.diamondgoobird.test.testmod.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.diamondgoobird.test.testmod.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.diamondgoobird.test.testmod.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.diamondgoobird.test.testmod.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/testmod.iml" filepath="$PROJECT_DIR$/.idea/modules/testmod.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/testmod.api.iml" filepath="$PROJECT_DIR$/.idea/modules/testmod.api.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/testmod.main.iml" filepath="$PROJECT_DIR$/.idea/modules/testmod.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/testmod.test.iml" filepath="$PROJECT_DIR$/.idea/modules/testmod.test.iml" />

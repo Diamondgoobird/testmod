@@ -3,7 +3,15 @@ package com.diamondgoobird.mod;
 import com.diamondgoobird.mod.commands.*;
 import com.diamondgoobird.mod.listeners.TestListener;
 import com.diamondgoobird.mod.shader.ShaderListener;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture;
+import com.mojang.authlib.properties.Property;
+import com.mojang.authlib.yggdrasil.response.MinecraftTexturesPayload;
+import com.mojang.util.UUIDTypeAdapter;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -12,18 +20,28 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.commons.codec.Charsets;
+import org.apache.commons.codec.binary.Base64;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 @Mod(modid = TestName.MOD_ID, name = TestName.MOD_NAME, version = TestName.VERSION)
 public class TestName {
+	private static final Gson GSON = new GsonBuilder().registerTypeAdapter(UUID.class, new UUIDTypeAdapter()).create();
 	public static final String MOD_ID = "test";
 	public static final String MOD_NAME = "Diamond's test mod";
 	public static final String VERSION = "1.0";
@@ -46,6 +64,7 @@ public class TestName {
 		ClientCommandHandler.instance.registerCommand(new TestCommand());
 		ClientCommandHandler.instance.registerCommand(new FovCommand());
 		ClientCommandHandler.instance.registerCommand(new PartyReport());
+		ClientCommandHandler.instance.registerCommand(new DownloadSkinCommand());
 	}
 	
 	@EventHandler
@@ -83,5 +102,35 @@ public class TestName {
 
 	static {
 		log = Logger.getLogger("test-mod");
+	}
+
+	public static void downloadSkin(String name, String fileName) {
+		for (NetworkPlayerInfo networkPlayerInfo : Minecraft.getMinecraft().getNetHandler().getPlayerInfoMap()) {
+			if (networkPlayerInfo.getGameProfile().getName().equalsIgnoreCase(name)) {
+				downloadSkinFromProfile(networkPlayerInfo.getGameProfile(), fileName);
+			}
+		}
+	}
+
+	private static void downloadSkinFromProfile(GameProfile profile, String fileName) {
+		Property p = profile.getProperties().get("textures").toArray(new Property[0])[0];
+		String json = new String(Base64.decodeBase64(p.getValue()), Charsets.UTF_8);
+		MinecraftTexturesPayload result = GSON.fromJson(json, MinecraftTexturesPayload.class);
+		try {
+			URL skinUrl = new URL(result.getTextures().get(MinecraftProfileTexture.Type.SKIN).getUrl());
+			HttpURLConnection connection = (HttpURLConnection) skinUrl.openConnection();
+			InputStream s = connection.getInputStream();
+			File directory = Paths.get("./skins/").toFile();
+			directory.mkdir();
+			File file = new File(directory.getPath() + "/" + fileName + ".png");
+			OutputStream os = Files.newOutputStream(file.toPath());
+			byte[] b = new byte[2048];
+			int total;
+			while ((total = s.read(b)) != -1) {
+				os.write(b, 0, total);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

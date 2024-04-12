@@ -28,6 +28,9 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class DownloadSkinCommand extends BaseCommand {
+    private static String currentFileName = "skin";
+    private static String defaultName = "player";
+
     @Override
     public String getCommandName() {
         return "downloadskin";
@@ -40,12 +43,19 @@ public class DownloadSkinCommand extends BaseCommand {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
-        if (args.length == 2) {
-            TestName.downloadSkin(args[0], args[1]);
+        if (args.length == 1) {
+            defaultName = args[0];
         }
-        else {
+        else if (args.length == 2) {
+            defaultName = args[0];
+            currentFileName = args[1];
+        }
+        else if (args.length != 0) {
             sender.addChatMessage(new ChatComponentText("Invalid argument amount."));
+            return;
         }
+        sender.addChatMessage(new ChatComponentText("Downloading skin of " + defaultName + " to " + currentFileName + ".png"));
+        TestName.downloadSkin(defaultName, currentFileName);
     }
 
     @Override
@@ -65,5 +75,9 @@ public class DownloadSkinCommand extends BaseCommand {
             names.add(networkPlayerInfo.getGameProfile().getName());
         }
         return names.toArray(new String[0]);
+    }
+
+    public static void setCurrentFileName(String newFileName) {
+        currentFileName = newFileName;
     }
 }

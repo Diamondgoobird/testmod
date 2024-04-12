@@ -12,6 +12,8 @@ import com.mojang.authlib.yggdrasil.response.MinecraftTexturesPayload;
 import com.mojang.util.UUIDTypeAdapter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetworkPlayerInfo;
+import net.minecraft.client.renderer.texture.TextureUtil;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,14 +25,13 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.commons.codec.Charsets;
 import org.apache.commons.codec.binary.Base64;
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.ByteBuffer;
@@ -65,6 +66,7 @@ public class TestName {
 		ClientCommandHandler.instance.registerCommand(new FovCommand());
 		ClientCommandHandler.instance.registerCommand(new PartyReport());
 		ClientCommandHandler.instance.registerCommand(new DownloadSkinCommand());
+		ClientCommandHandler.instance.registerCommand(new NickSkinCommand());
 	}
 	
 	@EventHandler
@@ -120,9 +122,26 @@ public class TestName {
 			URL skinUrl = new URL(result.getTextures().get(MinecraftProfileTexture.Type.SKIN).getUrl());
 			HttpURLConnection connection = (HttpURLConnection) skinUrl.openConnection();
 			InputStream s = connection.getInputStream();
+			//
+			BufferedImage i = TextureUtil.readBufferedImage(s);
+			if (i.getHeight() == 32) {
+				i = resizeImage(i);
+				PipedOutputStream pos = new PipedOutputStream();
+				s = new PipedInputStream(pos);
+				BufferedImage finalI = i;
+				// might not need to be a thread?
+				new Thread(() -> {
+					try {
+						ImageIO.write(finalI, "png", pos);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}).start();
+			}
+			//
 			File directory = Paths.get("./skins/").toFile();
 			directory.mkdir();
-			File file = new File(directory.getPath() + "/" + fileName + ".png");
+			File file = new File(directory.getPath() + "/" + fileName.toLowerCase() + ".png");
 			OutputStream os = Files.newOutputStream(file.toPath());
 			byte[] b = new byte[2048];
 			int total;
@@ -132,5 +151,32 @@ public class TestName {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	// TODO: duplicate arms and legs
+	public static BufferedImage resizeImage(BufferedImage originalImage) {
+		BufferedImage resizedImage = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g = resizedImage.createGraphics();
+		g.setBackground(new Color(0, 0, 0, 0));
+		g.drawImage(originalImage, 0, 0, 64, 32, null);
+		// make an image for each arm and leg, then draw it like the line above to be in the right spot
+		BufferedImage armImage = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D ag = armImage.createGraphics();
+		ag.setBackground(new Color(0, 0, 0, 0));
+		ag.drawImage(originalImage, 0, -16, 64, 32, null);
+
+		BufferedImage legImage = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D lg = legImage.createGraphics();
+		lg.setBackground(new Color(0, 0, 0, 0));
+		lg.drawImage(originalImage, -40, -16, 64, 32, null);
+
+		lg.dispose();
+		ag.dispose();
+
+		g.drawImage(armImage, 16, 48, 16, 16, null);
+		g.drawImage(legImage, 32, 48, 16, 16, null);
+
+		g.dispose();
+		return resizedImage;
 	}
 }

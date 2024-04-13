@@ -48,6 +48,10 @@ public class TestName {
 	public static final String VERSION = "1.0";
 	public static boolean cancelNext = false;
 	public static Logger log;
+
+	static {
+		log = Logger.getLogger("test-mod");
+	}
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent preEvent) throws LWJGLException, IOException {
 		log.info("Starting preinit...");
@@ -88,8 +92,7 @@ public class TestName {
 		Minecraft.getMinecraft().thePlayer.addChatMessage(e);
 	}
 
-	public static ByteBuffer readImageToBuffer(InputStream imageStream) throws IOException
-	{
+	public static ByteBuffer readImageToBuffer(InputStream imageStream) throws IOException {
 		BufferedImage bufferedimage = ImageIO.read(imageStream);
 		int[] aint = bufferedimage.getRGB(0, 0, bufferedimage.getWidth(), bufferedimage.getHeight(), (int[])null, 0, bufferedimage.getWidth());
 		ByteBuffer bytebuffer = ByteBuffer.allocate(4 * aint.length);
@@ -100,10 +103,6 @@ public class TestName {
 
 		bytebuffer.flip();
 		return bytebuffer;
-	}
-
-	static {
-		log = Logger.getLogger("test-mod");
 	}
 
 	public static void downloadSkin(String name, String fileName) {
@@ -153,7 +152,6 @@ public class TestName {
 		}
 	}
 
-	// TODO: duplicate arms and legs
 	public static BufferedImage resizeImage(BufferedImage originalImage) {
 		BufferedImage resizedImage = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g = resizedImage.createGraphics();
@@ -164,11 +162,13 @@ public class TestName {
 		Graphics2D ag = armImage.createGraphics();
 		ag.setBackground(new Color(0, 0, 0, 0));
 		ag.drawImage(originalImage, 0, -16, 64, 32, null);
+		flipComponents(armImage);
 
 		BufferedImage legImage = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D lg = legImage.createGraphics();
 		lg.setBackground(new Color(0, 0, 0, 0));
 		lg.drawImage(originalImage, -40, -16, 64, 32, null);
+		flipComponents(legImage);
 
 		lg.dispose();
 		ag.dispose();
@@ -178,5 +178,40 @@ public class TestName {
 
 		g.dispose();
 		return resizedImage;
+	}
+
+	private static void flipComponents(BufferedImage image) {
+		Graphics2D graphics2D = image.createGraphics();
+		BufferedImage[] parts = getParts(image);
+		BufferedImage p2 = parts[2];
+		parts[2] = parts[4];
+		parts[4] = p2;
+		for (int i = 0; i < 6; i++) {
+			int x = 4 * (i < 2 ? i + 1 : i - 2);
+			int y = i < 2 ? 0 : 4;
+			int w = 4;
+			int h = i < 2 ? 4 : 12;
+			graphics2D.drawImage(parts[i], x, y, w, h, null);
+		}
+	}
+
+	private static BufferedImage[] getParts(BufferedImage image) {
+		BufferedImage[] parts = new BufferedImage[6];
+		for (int i = 0; i < 6; i++) {
+			parts[i] = flip(image.getSubimage(4 * (i < 2 ? i + 1 : i - 2), i < 2 ? 0 : 4, 4, i < 2 ? 4 : 12));
+		}
+		return parts;
+	}
+
+	private static BufferedImage flip(BufferedImage image) {
+		int width = image.getWidth();
+		int height = image.getHeight();
+		BufferedImage flippedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g = flippedImage.createGraphics();
+
+		g.drawImage(image, 0, 0, width, height, width, 0, 0, height, null);
+		g.dispose();
+
+		return flippedImage;
 	}
 }

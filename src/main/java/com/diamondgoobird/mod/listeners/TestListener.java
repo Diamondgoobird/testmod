@@ -17,6 +17,7 @@ public class TestListener {
     private static final String GOOD_FORMAT = EnumChatFormatting.BLUE + "Found new skin: %s";
     private static final String BAD_FORMAT = EnumChatFormatting.RED + "Skin found again: %s";
     private static final Pattern SKIN_PATTERN = Pattern.compile("Your skin has been set to (?<skin>\\S+).");
+    private static final Pattern GUILD_PATTERN = Pattern.compile("Guild > (?<name>[a-zA-Z0-9_]{3,16}) joined.");
 
     @SubscribeEvent
     public void onChat(ClientChatReceivedEvent event) {
@@ -36,6 +37,10 @@ public class TestListener {
             System.out.print(m.group("skin"));
             DownloadSkinCommand.setCurrentFileName(m.group("skin"));
             Minecraft.getMinecraft().thePlayer.addChatComponentMessage(new ChatComponentText(getMessage(m.group("skin"))));
+        }
+        Matcher gm = GUILD_PATTERN.matcher(text);
+        if (gm.matches()) {
+            Minecraft.getMinecraft().thePlayer.sendChatMessage("/gc Welcome back " + gm.group("name") + "!");
         }
     }
 

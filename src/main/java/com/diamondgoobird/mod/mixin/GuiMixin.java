@@ -1,5 +1,6 @@
 package com.diamondgoobird.mod.mixin;
 
+import com.diamondgoobird.mod.Test;
 import com.diamondgoobird.mod.TestConfig;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -14,7 +15,6 @@ import java.util.Random;
 
 @Mixin(Gui.class)
 public class GuiMixin {
-    private static float hue = 0.0f;
     private static final Random rand = new Random();
 
     @Inject(method = "drawCenteredString", at = @At("HEAD"), cancellable = true)
@@ -37,8 +37,7 @@ public class GuiMixin {
                     }
                     break;
                 case 1:
-                    color = Color.HSBtoRGB(hue, 1.0f, 1.0f);
-                    hue += 0.0001f;
+                    color = Color.HSBtoRGB(Test.getHue(), 1.0f, 1.0f);
                     break;
                 case 2:
                     color = new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()).getRGB();

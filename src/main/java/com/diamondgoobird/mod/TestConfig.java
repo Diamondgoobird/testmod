@@ -72,4 +72,28 @@ public class TestConfig extends Vigilant {
             description = "Whether or not shaders should randomly"
     )
     public boolean switchShaders = false;
+
+    @Property(
+            type = PropertyType.TEXT,
+            name = "Discord Bot Token",
+            category = "Discord",
+            description = "Token to use for typing in discord channels."
+    )
+    public String discordToken = "";
+
+    @Property(
+            type = PropertyType.TEXT,
+            name = "Discord Server ID",
+            category = "Discord",
+            description = "ID for server to type in."
+    )
+    public String discordServerId = "";
+
+    @Property(
+            type = PropertyType.TEXT,
+            name = "Discord Channel ID",
+            category = "Discord",
+            description = "ID for channel to type in."
+    )
+    public String discordChannelId = "";
 }

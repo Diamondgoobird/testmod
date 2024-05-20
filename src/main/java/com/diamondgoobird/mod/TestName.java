@@ -1,6 +1,7 @@
 package com.diamondgoobird.mod;
 
 import com.diamondgoobird.mod.commands.*;
+import com.diamondgoobird.mod.discord.DiscordBotClient;
 import com.diamondgoobird.mod.listeners.TestListener;
 import com.diamondgoobird.mod.shader.ShaderListener;
 import com.google.gson.Gson;
@@ -71,11 +72,16 @@ public class TestName {
 		ClientCommandHandler.instance.registerCommand(new PartyReport());
 		ClientCommandHandler.instance.registerCommand(new DownloadSkinCommand());
 		ClientCommandHandler.instance.registerCommand(new NickSkinCommand());
+		//ClientCommandHandler.instance.registerCommand(new DiscordCommand());
+		ClientCommandHandler.instance.registerCommand(new AICommand());
+		ClientCommandHandler.instance.registerCommand(new RatCommand());
 	}
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent postEvent) {
 		log.info("Completing Initialization...");
+		// DiscordBotClient instance = DiscordBotClient.instance;
+		// log.info(instance != null ? "Completed discord initialization" : "Failed discord initialization");
 	}
 
 	public static void print(String input) {

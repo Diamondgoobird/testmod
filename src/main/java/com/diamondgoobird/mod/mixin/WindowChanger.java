@@ -7,6 +7,7 @@ import net.minecraft.client.resources.DefaultResourcePack;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.Display;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -22,6 +23,8 @@ import static com.diamondgoobird.mod.TestName.readImageToBuffer;
 
 @Mixin(Minecraft.class)
 public class WindowChanger {
+    @Shadow
+    private static Minecraft theMinecraft;
 
     @Redirect(method = "setWindowIcon", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/Display;setIcon([Ljava/nio/ByteBuffer;)I"))
     public int setDisplayIcon(ByteBuffer[] old_position) {
@@ -34,7 +37,7 @@ public class WindowChanger {
     @Unique
     private void testmod$setLunarIcon() {
         try {
-            DefaultResourcePack pack = Minecraft.getMinecraft().mcDefaultResourcePack;
+            DefaultResourcePack pack = theMinecraft.mcDefaultResourcePack;
             InputStream a = pack.getInputStream(new ResourceLocation("test:icon_32x32.png"));
             Display.setIcon(new ByteBuffer[]{readImageToBuffer(a)});
         } catch (Exception fasd) {

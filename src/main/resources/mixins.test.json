@@ -5,8 +5,11 @@
   "package": "com.diamondgoobird.mod.mixin",
   "client": [
     "FMLCommonHandlerMixin",
+    "GuiChatMixin",
     "GuiMainMenuMixin",
     "GuiMixin",
+    "RenderFishMixin",
+    "RenderGlobalMixin",
     "WindowChanger"
   ]
 }

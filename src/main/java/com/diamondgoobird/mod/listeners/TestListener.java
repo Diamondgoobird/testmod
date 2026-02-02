@@ -8,8 +8,14 @@ import net.minecraft.util.*;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,7 +40,7 @@ public class TestListener {
             if (TestConfig.instance.aiKeyword != null && !TestConfig.instance.aiKeyword.isEmpty()) {
                 keyword = TestConfig.instance.aiKeyword;
             }
-            if (!m1.group("name").equals(Minecraft.getMinecraft().thePlayer.getName()) && strippedText.toLowerCase().contains(keyword.toLowerCase())) {
+            if (!shouldIgnoreName(m1.group("name")) && strippedText.toLowerCase().contains(keyword.toLowerCase())) {
                 try {
                     ClientCommandHandler.instance.executeCommand(Minecraft.getMinecraft().thePlayer, "/rat " + m1.group("name") + ": " + m1.group("message"));
                 }
@@ -63,6 +69,25 @@ public class TestListener {
         if (gm.matches()) {
             Minecraft.getMinecraft().thePlayer.sendChatMessage("/gc Welcome back " + gm.group("name") + "!");
         }
+    }
+
+    private boolean shouldIgnoreName(String name) {
+        return name.equals(Minecraft.getMinecraft().thePlayer.getName()) || !isUsername(name);
+    }
+
+    private boolean isUsername(String name) {
+        try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
+            HttpGet request = new HttpGet("https://api.mojang.com/users/profiles/minecraft/" + name);
+            request.addHeader("content-type", "application/json");
+            CloseableHttpResponse closeableHttpResponse = httpClient.execute((HttpUriRequest)request);
+            if (closeableHttpResponse.toString().contains("No Content")) {
+                return false;
+            }
+        }
+        catch (IOException e) {
+            return false;
+        }
+        return true;
     }
 
     private static String getMessage(String group) {

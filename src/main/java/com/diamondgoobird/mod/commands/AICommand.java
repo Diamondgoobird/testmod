@@ -16,10 +16,7 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 import static com.diamondgoobird.mod.Test.toPrompt;
 import static com.diamondgoobird.mod.Test.print;
@@ -40,7 +37,7 @@ public class AICommand extends BaseCommand {
 
     @Override
     public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
-        return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"!resetcontext", "!help", "!getcontext", "!updatecontext"}) : /*(args.length == 2 ? getListOfStringsMatchingLastWord() :*/ null;
+        return args.length == 1 ? getListOfStringsMatchingLastWord(args, "!resetcontext", "!help", "!getcontext", "!updatecontext", "!send") : (args.length == 2 ? getListOfStringsMatchingLastWord(args, "yes", "no", "view") : null);
     }
 
     @Override
@@ -63,15 +60,19 @@ public class AICommand extends BaseCommand {
                     print(sender, "yeah we contexted it");
                     break;
                 case "send":
-                    printQueue(false);
-                    if (!messages.isEmpty()) {
-                        if (args.length < 2 || args[1].equalsIgnoreCase("yes") || args[1].equalsIgnoreCase("y")) {
-                            Minecraft.getMinecraft().thePlayer.sendChatMessage(messages.remove());
+                    if (args.length > 1) {
+                        if (args[1].equalsIgnoreCase("yes") || args[1].equalsIgnoreCase("y")) {
+                            modifyQueue(true);
                         }
-                        else if (!args[1].equalsIgnoreCase("view")) {
-                            printQueue(true);
-                            messages.remove();
+                        else if (args[1].equalsIgnoreCase("reject") || args[1].equalsIgnoreCase("no") || args[1].equalsIgnoreCase("n")) {
+                            modifyQueue(false);
                         }
+                        else if (args[1].equalsIgnoreCase("view")) {
+                            printQueue();
+                        }
+                    }
+                    else {
+                        modifyQueue(true);
                     }
                     break;
             }
@@ -101,16 +102,34 @@ public class AICommand extends BaseCommand {
         }).start();
     }
 
-    private void printQueue(boolean force) {
-        if (messages.isEmpty() == force) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(EnumChatFormatting.LIGHT_PURPLE).append(repeat("=", 30)).append("\n");
+    private void modifyQueue(boolean send) {
+        if (!messages.isEmpty()) {
+            String message = messages.remove();
+            print(Minecraft.getMinecraft().thePlayer, (send ? EnumChatFormatting.GREEN + "Sent" : EnumChatFormatting.RED + "Rejected") + EnumChatFormatting.AQUA + ": " + message);
+            if (send) {
+                Minecraft.getMinecraft().thePlayer.sendChatMessage(message);
+            }
+            print(Minecraft.getMinecraft().thePlayer, EnumChatFormatting.LIGHT_PURPLE + "New Queue" + EnumChatFormatting.DARK_PURPLE + ":");
+        }
+        printQueue();
+    }
+
+    private void printQueue() {
+        StringBuilder sb = new StringBuilder();
+        if (messages.isEmpty()) {
+            sb.append(EnumChatFormatting.AQUA).append("Empty queue.").append("\n");
+        }
+        else {
             for (String message : messages) {
                 sb.append(message).append("\n");
             }
-            sb.append(EnumChatFormatting.LIGHT_PURPLE).append(repeat("=", 30)).append("\n");
-            print(Minecraft.getMinecraft().thePlayer, sb.toString());
         }
+        int max = Minecraft.getMinecraft().fontRendererObj.getStringWidth(Arrays.stream(sb.toString().split("\n")).max(Comparator.comparingInt(o -> Minecraft.getMinecraft().fontRendererObj.getStringWidth(o))).get());
+        max = (int) Math.ceil((double) max / Minecraft.getMinecraft().fontRendererObj.getCharWidth('='));
+        String sb1 = EnumChatFormatting.LIGHT_PURPLE + repeat("=", max) + "\n" +
+                sb +
+                EnumChatFormatting.LIGHT_PURPLE + repeat("=", max);
+        print(Minecraft.getMinecraft().thePlayer, sb1);
     }
 
     private String repeat(String str, int n) {

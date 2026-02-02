@@ -40,7 +40,7 @@ public class AICommand extends BaseCommand {
 
     @Override
     public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
-        return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"!resetcontext", "!help", "!getcontext", "!updatecontext"}): null;
+        return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"!resetcontext", "!help", "!getcontext", "!updatecontext"}) : /*(args.length == 2 ? getListOfStringsMatchingLastWord() :*/ null;
     }
 
     @Override

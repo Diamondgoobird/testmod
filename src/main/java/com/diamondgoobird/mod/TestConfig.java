@@ -96,4 +96,64 @@ public class TestConfig extends Vigilant {
             description = "ID for channel to type in."
     )
     public String discordChannelId = "";
+
+    @Property(
+            type = PropertyType.TEXT,
+            name = "AI Model",
+            category = "AI",
+            description = "AI Model for to use"
+    )
+    public String aiModelName = "llama3";
+
+    @Property(
+            type = PropertyType.PARAGRAPH,
+            name = "System Prompt",
+            category = "AI",
+            description = "System prompt for AI Model to use"
+    )
+    public String aiSystemPrompt = "Play the role of %player%, a chatter on the hypixel server who acts kind, cheerful, and family friendly.";
+
+    @Property(
+            type = PropertyType.TEXT,
+            name = "Ollama API",
+            category = "AI",
+            description = "URL for the Ollama API"
+    )
+    public String aiOllamaAPI = "http://127.0.0.1:11434";
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Auto Send Messages",
+            category = "AI",
+            description = "Should rat automatically send ai messages"
+    )
+    public boolean aiAutoSend = false;
+
+    @Property(
+            type = PropertyType.DECIMAL_SLIDER,
+            name = "Minimum Send Delay",
+            category = "AI",
+            description = "Minimum delay before autosending in seconds",
+            minF = 0.0F,
+            maxF = 15.0F
+    )
+    public float aiMinimumDelay = 0.0f;
+
+    @Property(
+            type = PropertyType.DECIMAL_SLIDER,
+            name = "Maximum Send Delay",
+            category = "AI",
+            description = "Maximum delay before autosending in seconds",
+            minF = 0.0F,
+            maxF = 15.0F
+    )
+    public float aiMaximumDelay = 5.0f;
+
+    @Property(
+            type = PropertyType.TEXT,
+            name = "Keyword",
+            category = "AI",
+            description = "Phrase that ai should respond to"
+    )
+    public String aiKeyword = "";
 }

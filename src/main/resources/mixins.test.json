@@ -8,8 +8,10 @@
     "GuiChatMixin",
     "GuiMainMenuMixin",
     "GuiMixin",
+    "GuiScreenMixin",
     "RenderFishMixin",
     "RenderGlobalMixin",
-    "WindowChanger"
+    "WindowChanger",
+    "C01PacketChatMessageMixin"
   ]
 }

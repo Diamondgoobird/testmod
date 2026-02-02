@@ -1,14 +1,14 @@
 package com.diamondgoobird.mod.commands;
 
+import com.diamondgoobird.mod.TestConfig;
+import com.diamondgoobird.mod.TestName;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.event.ClickEvent;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.ChatStyle;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
 
 import java.io.BufferedReader;
@@ -16,17 +16,17 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 import static com.diamondgoobird.mod.Test.toPrompt;
-import static jdk.nashorn.internal.objects.Global.print;
+import static com.diamondgoobird.mod.Test.print;
 
 public class AICommand extends BaseCommand {
-
-    public static String keyword = null;
-    private static JsonObject context = new JsonObject();
-    private static boolean updateContext = true;
-    private static int currentPrompts = 0;
-    private static String systemPrompt = "";
+    public static Queue<String> messages = new LinkedList<>();
+    private static JsonArray context = new JsonArray();
 
     @Override
     public String getCommandName() {
@@ -35,7 +35,12 @@ public class AICommand extends BaseCommand {
 
     @Override
     public String getCommandUsage(ICommandSender sender) {
-        return "talks to ai";
+        return "Interacts with the Chatbot through ollama, configure with /test";
+    }
+
+    @Override
+    public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
+        return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"!resetcontext", "!help", "!getcontext", "!updatecontext"}): null;
     }
 
     @Override
@@ -43,27 +48,31 @@ public class AICommand extends BaseCommand {
         if (args.length >= 1 && args[0].startsWith("!")) {
             String command = args[0].substring(1);
             switch (command) {
+                case "resetcontext":
+                    context = new JsonArray();
+                    print(sender, "reset context");
+                    break;
+                case "help":
+                    print(sender, "getcontext, updatecontext, resetcontext");
+                    break;
                 case "getcontext":
                     print(sender, context.toString());
                     break;
                 case "updatecontext":
-                    updateContext = !updateContext;
-                    print(sender, updateContext ? "Context will now dynamically update." : "Context is now locked as is.");
+                    context = new JsonParser().parse(args[1]).getAsJsonArray();
+                    print(sender, "yeah we contexted it");
                     break;
-                case "resetcontext":
-                    context.add("llama3", new JsonArray());
-                    print(sender, "reset context");
-                    break;
-                case "system":
-                    systemPrompt = args[1];
-                    print(sender, "set system prompt to: " + systemPrompt);
-                    break;
-                case "help":
-                    print(sender, "getcontext, updatecontext, resetcontext, system, keyword");
-                    break;
-                case "keyword":
-                    keyword = args[1];
-                    print(sender, "keyword set to: " + keyword);
+                case "send":
+                    printQueue(false);
+                    if (!messages.isEmpty()) {
+                        if (args.length < 2 || args[1].equalsIgnoreCase("yes") || args[1].equalsIgnoreCase("y")) {
+                            Minecraft.getMinecraft().thePlayer.sendChatMessage(messages.remove());
+                        }
+                        else if (!args[1].equalsIgnoreCase("view")) {
+                            printQueue(true);
+                            messages.remove();
+                        }
+                    }
                     break;
             }
             return;
@@ -71,34 +80,59 @@ public class AICommand extends BaseCommand {
         String prompt = toPrompt(args);
         print(sender, EnumChatFormatting.LIGHT_PURPLE + "Prompt: " + EnumChatFormatting.AQUA + "\"" + EnumChatFormatting.DARK_AQUA + prompt + EnumChatFormatting.AQUA + "\"");
         new Thread( () -> {
-            do {
+            String aiResponse = getResponse(prompt);
+            TestName.log.info("prompt: " + prompt);
+            TestName.log.info("aiResponse: " + aiResponse);
+            aiResponse = aiResponse.replaceAll(Minecraft.getMinecraft().thePlayer.getName(), "").toLowerCase().replaceAll("kirkcatcat", "kirkratrat").replaceAll("andycatcat", "andybadcat").replaceAll("[^\\sa-zA-Z0-9]","");
+            TestName.log.info("filtered response: " + aiResponse);
+            if (TestConfig.instance.aiAutoSend) {
                 try {
-                    Thread.sleep(1000);
+                    long duration = (long) (1000 * (TestConfig.instance.aiMinimumDelay + Math.random() * (TestConfig.instance.aiMaximumDelay - TestConfig.instance.aiMinimumDelay)));
+                    Thread.sleep(duration);
+                    Minecraft.getMinecraft().thePlayer.sendChatMessage(aiResponse);
                 } catch (InterruptedException e) {
 
                 }
             }
-            while (currentPrompts >= 1);
-            currentPrompts++;
-            String llama3 = getResponse(prompt, "llama3");
-            print(sender, "Llama3: " + llama3, llama3);
+            else {
+                print(sender, EnumChatFormatting.LIGHT_PURPLE + "AI: " + aiResponse, aiResponse);
+                AICommand.messages.add(aiResponse);
+            }
         }).start();
     }
 
-    private static String getResponse(String prompt, String model) {
+    private void printQueue(boolean force) {
+        if (messages.isEmpty() == force) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(EnumChatFormatting.LIGHT_PURPLE).append(repeat("=", 30)).append("\n");
+            for (String message : messages) {
+                sb.append(message).append("\n");
+            }
+            sb.append(EnumChatFormatting.LIGHT_PURPLE).append(repeat("=", 30)).append("\n");
+            print(Minecraft.getMinecraft().thePlayer, sb.toString());
+        }
+    }
+
+    private String repeat(String str, int n) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            sb.append(str);
+        }
+        return sb.toString();
+    }
+
+    private static String getResponse(String prompt) {
         try {
             JsonObject json = new JsonObject();
 
-            json.addProperty("model", model);
+            json.addProperty("model", TestConfig.instance.aiModelName);
             json.addProperty("prompt", prompt);
-            if (context.entrySet().size() >= 1) {
-                json.add("context", context.get(model));
+            if (context.size() >= 1) {
+                json.add("context", context);
             }
-            if (!systemPrompt.equals("")) {
-                json.addProperty("system", systemPrompt);
-            }
+            json.addProperty("system", TestConfig.instance.aiSystemPrompt.replaceAll("%player%", Minecraft.getMinecraft().thePlayer.getName()));
 
-            URL url = new URL("http://localhost:11434/api/generate");
+            URL url = new URL(TestConfig.instance.aiOllamaAPI + "/api/generate");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
 
@@ -112,8 +146,6 @@ public class AICommand extends BaseCommand {
 
             int responseCode = connection.getResponseCode();
 
-            System.out.println(responseCode);
-
             BufferedReader in = null;
             if (responseCode == 200) {
                 in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -123,16 +155,14 @@ public class AICommand extends BaseCommand {
                 while ((inputLine = in.readLine()) != null) {
                     JsonObject element = parser.parse(inputLine).getAsJsonObject();
                     if (element.get("done").getAsBoolean()) {
-                        context.add(model, element.get("context").getAsJsonArray());
+                        context = element.get("context").getAsJsonArray();
                     }
                     else {
-                        String s = element.get("response").getAsString();
-
-                        response.append(s);
+                        response.append(element.get("response").getAsString());
                     }
                 }
                 in.close();
-                return response.toString() + "\n";
+                return response.toString();
             } else {
                 in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
                 String inputLine;

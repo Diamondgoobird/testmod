@@ -12,7 +12,7 @@
     </facet>
   </component>
   <component name="McpModuleSettings">
-    <option name="mappingFile" value="C:\Users\birds\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_stable\20\srgs\mcp-srg.srg" />
+    <option name="mappingFile" value="$USER_HOME$/.gradle/caches/minecraft/de/oceanlabs/mcp/mcp_stable/20/srgs/mcp-srg.srg" />
     <option name="mcpVersion" value="stable_20" />
     <option name="minecraftVersion" value="1.8.9" />
     <option name="srgType" value="SRG" />

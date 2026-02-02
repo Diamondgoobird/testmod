@@ -75,11 +75,11 @@ public class Test {
         return b == null ? "" : b.toString();
     }
 
-    public void print(ICommandSender sender, String msg) {
+    public static void print(ICommandSender sender, String msg) {
         sender.addChatMessage(new ChatComponentText(msg));
     }
 
-    public void print(ICommandSender sender, String s, String llama3) {
-        sender.addChatMessage(new ChatComponentText(s).setChatStyle(new ChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, llama3))));
+    public static void print(ICommandSender sender, String text, String command) {
+        sender.addChatMessage(new ChatComponentText(text).setChatStyle(new ChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, command))));
     }
 }

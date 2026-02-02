@@ -1,7 +1,7 @@
 package com.diamondgoobird.mod;
 
 import com.diamondgoobird.mod.commands.*;
-import com.diamondgoobird.mod.discord.DiscordBotClient;
+import com.diamondgoobird.mod.listeners.OnKey;
 import com.diamondgoobird.mod.listeners.TestListener;
 import com.diamondgoobird.mod.shader.ShaderListener;
 import com.google.gson.Gson;
@@ -15,9 +15,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.network.play.server.S02PacketChat;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -38,6 +40,7 @@ import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Scanner;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -49,16 +52,33 @@ public class TestName {
 	public static final String VERSION = "1.0";
 	public static boolean cancelNext = false;
 	public static Logger log;
+    public static final KeyBinding SEND_MESSAGE = new KeyBinding("Send Chatbot message", Keyboard.KEY_Y,  MOD_ID);
+    public static final KeyBinding REJECT_MESSAGE = new KeyBinding("Reject Chatbot message", Keyboard.KEY_N,  MOD_ID);
+    public static final KeyBinding VIEW_MESSAGES = new KeyBinding("View queued messages", Keyboard.KEY_H, MOD_ID);
 
 	static {
 		log = Logger.getLogger("test-mod");
 	}
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent preEvent) throws LWJGLException, IOException {
+		new Thread( () -> {
+			Scanner scan = new Scanner(System.in);
+			while (true) {
+                try {
+					Minecraft.getMinecraft().getNetHandler().handleChat(new S02PacketChat(new ChatComponentText(scan.nextLine())));
+                    Thread.sleep(1500);
+                } catch (Exception e) {
+
+                }
+                // new TestListener().onChat(new ClientChatReceivedEvent((byte) 0, new ChatComponentText(scan.nextLine())));
+				// ClientCommandHandler.instance.executeCommand(Minecraft.getMinecraft().thePlayer, "/rat " + scan.nextLine());
+			}
+		}).start();
 		log.info("Starting preinit...");
 		Display.setTitle(TestConfig.instance.windowName);
 		MinecraftForge.EVENT_BUS.register(new TestListener());
 		MinecraftForge.EVENT_BUS.register(new ShaderListener());
+        MinecraftForge.EVENT_BUS.register(new OnKey());
 		// MinecraftForge.EVENT_BUS.register(new OnJoin());
 		// MinecraftForge.EVENT_BUS.register(new OnDisconnect());
 	}
@@ -74,7 +94,10 @@ public class TestName {
 		ClientCommandHandler.instance.registerCommand(new NickSkinCommand());
 		//ClientCommandHandler.instance.registerCommand(new DiscordCommand());
 		ClientCommandHandler.instance.registerCommand(new AICommand());
-		ClientCommandHandler.instance.registerCommand(new RatCommand());
+		ClientCommandHandler.instance.registerCommand(new ScoreboardCommand());
+        ClientRegistry.registerKeyBinding(SEND_MESSAGE);
+        ClientRegistry.registerKeyBinding(REJECT_MESSAGE);
+        ClientRegistry.registerKeyBinding(VIEW_MESSAGES);
 	}
 	
 	@EventHandler

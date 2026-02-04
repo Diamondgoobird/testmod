@@ -78,6 +78,11 @@ public class AICommand extends BaseCommand {
             }
             return;
         }
+        promptAi(args);
+    }
+
+    public static void promptAi(String... args) {
+        ICommandSender sender = Minecraft.getMinecraft().thePlayer;
         String prompt = toPrompt(args);
         print(sender, EnumChatFormatting.LIGHT_PURPLE + "Prompt: " + EnumChatFormatting.AQUA + "\"" + EnumChatFormatting.DARK_AQUA + prompt + EnumChatFormatting.AQUA + "\"");
         new Thread( () -> {

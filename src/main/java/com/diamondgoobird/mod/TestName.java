@@ -1,6 +1,7 @@
 package com.diamondgoobird.mod;
 
 import com.diamondgoobird.mod.commands.*;
+import com.diamondgoobird.mod.listeners.AIListener;
 import com.diamondgoobird.mod.listeners.OnKey;
 import com.diamondgoobird.mod.listeners.TestListener;
 import com.diamondgoobird.mod.shader.ShaderListener;
@@ -60,7 +61,7 @@ public class TestName {
 		log = Logger.getLogger("test-mod");
 	}
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent preEvent) throws LWJGLException, IOException {
+	public void preInit(FMLPreInitializationEvent preEvent) {
 		new Thread( () -> {
 			Scanner scan = new Scanner(System.in);
 			while (true) {
@@ -79,6 +80,7 @@ public class TestName {
 		MinecraftForge.EVENT_BUS.register(new TestListener());
 		MinecraftForge.EVENT_BUS.register(new ShaderListener());
         MinecraftForge.EVENT_BUS.register(new OnKey());
+        MinecraftForge.EVENT_BUS.register(new AIListener());
 		// MinecraftForge.EVENT_BUS.register(new OnJoin());
 		// MinecraftForge.EVENT_BUS.register(new OnDisconnect());
 	}

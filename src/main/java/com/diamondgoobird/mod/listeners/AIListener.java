@@ -21,9 +21,10 @@ import java.util.regex.Pattern;
 public class AIListener {
     private static final Pattern CHAT_PATTERN = Pattern.compile(".*?(?<rank>\\[[a-zA-Z]{2,}\\+{0,2}] )?(?<name>[a-zA-Z0-9_]{3,16}): (?<message>.+)");
     private final Set<String> usercache = new TreeSet<>();
-    private static final Set<String> ignoreNames = new TreeSet<>();
+    private static final Set<String> ignoreNames;
 
     static {
+        ignoreNames = new TreeSet<>();
         ignoreNames.add(Minecraft.getMinecraft().thePlayer.getName());
         ignoreNames.add("Moderators");
     }

@@ -25,7 +25,6 @@ public class AIListener {
 
     static {
         ignoreNames = new TreeSet<>();
-        ignoreNames.add(Minecraft.getMinecraft().thePlayer.getName());
         ignoreNames.add("Moderators");
     }
 
@@ -51,7 +50,7 @@ public class AIListener {
     }
 
     private boolean shouldIgnoreName(String name) {
-        return ignoreNames.contains(name) || !isUsername(name);
+        return ignoreNames.contains(name) || name.equalsIgnoreCase(Minecraft.getMinecraft().thePlayer.getName()) || !isUsername(name);
     }
 
     private boolean isUsername(String name) {

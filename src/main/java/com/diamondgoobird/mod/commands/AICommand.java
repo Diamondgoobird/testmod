@@ -90,6 +90,8 @@ public class AICommand extends BaseCommand {
             TestName.log.info("prompt: " + prompt);
             TestName.log.info("aiResponse: " + aiResponse);
             aiResponse = aiResponse.replaceAll(Minecraft.getMinecraft().thePlayer.getName(), "").toLowerCase().replaceAll("kirkcatcat", "kirkratrat").replaceAll("andycatcat", "andybadcat").replaceAll("[^\\sa-zA-Z0-9]","");
+            aiResponse = aiResponse.replaceAll("null", "").replaceAll("\n", " ");
+            aiResponse = reconstruct(aiResponse);
             TestName.log.info("filtered response: " + aiResponse);
             if (TestConfig.instance.aiAutoSend) {
                 try {
@@ -105,6 +107,16 @@ public class AICommand extends BaseCommand {
                 AICommand.messages.add(aiResponse);
             }
         }).start();
+    }
+
+    private static String reconstruct(String aiResponse) {
+        StringBuilder response = new StringBuilder();
+        for (String pieces : aiResponse.split(" ")) {
+            if (!pieces.isEmpty()) {
+                response.append(pieces.trim() + " ");
+            }
+        }
+        return response.toString().trim();
     }
 
     private void modifyQueue(boolean send) {
@@ -131,6 +143,7 @@ public class AICommand extends BaseCommand {
         }
         int max = Minecraft.getMinecraft().fontRendererObj.getStringWidth(Arrays.stream(sb.toString().split("\n")).max(Comparator.comparingInt(o -> Minecraft.getMinecraft().fontRendererObj.getStringWidth(o))).get());
         max = (int) Math.ceil((double) max / Minecraft.getMinecraft().fontRendererObj.getCharWidth('='));
+        max = Math.min(max, 35);
         String sb1 = EnumChatFormatting.LIGHT_PURPLE + repeat("=", max) + "\n" +
                 sb +
                 EnumChatFormatting.LIGHT_PURPLE + repeat("=", max);
@@ -155,6 +168,14 @@ public class AICommand extends BaseCommand {
                 json.add("context", context);
             }
             json.addProperty("system", TestConfig.instance.aiSystemPrompt.replaceAll("%player%", Minecraft.getMinecraft().thePlayer.getName()));
+
+            if (TestConfig.instance.aiOptions) {
+                JsonObject options = new JsonObject();
+                options.addProperty("temperature", TestConfig.instance.aiTemperature);
+                options.addProperty("num_predict", TestConfig.instance.aiMaximumTokens);
+                options.addProperty("top_k", TestConfig.instance.aiTopK);
+                json.add("options", options);
+            }
 
             URL url = new URL(TestConfig.instance.aiOllamaAPI + "/api/generate");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

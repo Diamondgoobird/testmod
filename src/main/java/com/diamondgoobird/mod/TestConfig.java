@@ -15,14 +15,6 @@ public class TestConfig extends Vigilant {
     }
 
     @Property(
-            type = PropertyType.SWITCH,
-            name = "Mod Toggle",
-            category = "General",
-            description = "Turns certain mod features on and off"
-    )
-    public boolean enable = true;
-
-    @Property(
             type = PropertyType.TEXT,
             name = "Window Name",
             category = "Game Customization",
@@ -156,4 +148,42 @@ public class TestConfig extends Vigilant {
             description = "Phrase that ai should respond to"
     )
     public String aiKeyword = "";
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Model Options",
+            category = "AI",
+            subcategory = "Advanced",
+            description = "Enables custom model options"
+    )
+    public boolean aiOptions = false;
+
+    @Property(
+            type = PropertyType.DECIMAL_SLIDER,
+            name = "Temperature",
+            category = "AI",
+            description = "Model temperature, increasing makes the model more creative",
+            subcategory = "Advanced",
+            minF = 0.0F,
+            maxF = 1.0F
+    )
+    public float aiTemperature = 0.9f;
+
+    @Property(
+            type = PropertyType.NUMBER,
+            name = "Maximum Tokens",
+            category = "AI",
+            description = "Maximum number of tokens to predict when generating text",
+            subcategory = "Advanced"
+    )
+    public int aiMaximumTokens = 30;
+
+    @Property(
+            type = PropertyType.NUMBER,
+            name = "Top K",
+            category = "AI",
+            description = "The number of tokens to consider generating, higher for more diverse answers",
+            subcategory = "Advanced"
+    )
+    public int aiTopK = 80;
 }
